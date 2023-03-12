@@ -1,35 +1,32 @@
-import { useDispatch } from 'react-redux';
-import  { useRoutes, useNavigate } from 'react-router-dom';
-import { Button, Result } from 'antd';
-import { routes } from './router';
-import useNetwork from './hooks/useNetwork';
+import { useSelector } from 'react-redux';
 
-function App() {
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
-  const content = useRoutes(routes);
-  const { isOnline: isNetwork } = useNetwork();
+// routing
+import Routes from 'routes';
 
-  if (!isNetwork) 
+// defaultTheme
+import themes from 'themes';
+
+// project imports
+import NavigationScroll from 'layout/NavigationScroll';
+
+// ==============================|| APP ||============================== //
+
+const App = () => {
+    const customization = useSelector((state) => state.customization);
+
     return (
-      <>
-        <Result
-          status = "404"
-          title = " No Internet Connection"
-          subTitle="Check your Internet Connection or your network."
-          extra={
-            <Button href="/" type="primary">
-              Try Again
-            </Button>
-          }
-        >
-        </Result>
-      </>
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={themes(customization)}>
+                <CssBaseline />
+                <NavigationScroll>
+                    <Routes />
+                </NavigationScroll>
+            </ThemeProvider>
+        </StyledEngineProvider>
     );
-    else {
-      return (
-        {content}
-      );
-    }
-}
+};
 
 export default App;
