@@ -10,7 +10,7 @@ import Routes from 'routes';
 import themes from 'themes';
 
 // project imports
-import NavigationScroll from 'layout/NavigationScroll';
+import NavigationScroll from './components/layout/NavigationScroll';
 
 // ==============================|| APP ||============================== //
 
