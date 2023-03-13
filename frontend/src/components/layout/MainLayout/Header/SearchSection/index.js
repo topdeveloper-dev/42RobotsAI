@@ -18,7 +18,7 @@ import { shouldForwardProp } from '@mui/system';
 // styles
 const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({
     zIndex: 1100,
-    width: '99%',
+    width: '80%',
     top: '-55px !important',
     padding: '0 12px',
     [theme.breakpoints.down('sm')]: {
@@ -27,7 +27,7 @@ const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({
 }));
 
 const OutlineInputStyle = styled(OutlinedInput, { shouldForwardProp })(({ theme }) => ({
-    width: 434,
+    width: 340,
     marginLeft: 16,
     paddingLeft: 16,
     paddingRight: 16,

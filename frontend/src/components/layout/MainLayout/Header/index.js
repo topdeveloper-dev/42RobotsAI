@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types';
-
+import React from 'react';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Box, ButtonBase } from '@mui/material';
-
+import Switch from '@mui/material/Switch';
 // project imports
 import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
+import LogOut from './LogOut';
 import NotificationSection from './NotificationSection';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Slider from '@mui/material/Slider';
+import FormGroup from '@mui/material/FormGroup';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
@@ -16,6 +24,13 @@ import { IconMenu2 } from '@tabler/icons';
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
+
+	const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
     const theme = useTheme();
 
     return (
@@ -23,7 +38,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
             {/* logo & toggler button */}
             <Box
                 sx={{
-                    width: 228,
+                    width: 234,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
@@ -57,12 +72,49 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
             {/* header search */}
             <SearchSection />
+						<FormControlLabel
+							value="top"
+							control={<Switch defaultChecked />}
+							label="Toogle View Archive"
+							labelPlacement="top"
+							style={{marginLeft: 40}}
+						/>
+						<FormControl sx={{ m: 1, minWidth: 140, marginLeft: 4 }}>
+							<Select
+								value={age}
+								onChange={handleChange}
+								displayEmpty
+								inputProps={{ 'aria-label': 'Without label' }}
+							>
+								<MenuItem value="">
+									<em>Select AI Model</em>
+								</MenuItem>
+								<MenuItem value={10}>Ten</MenuItem>
+								<MenuItem value={20}>Twenty</MenuItem>
+								<MenuItem value={30}>Thirty</MenuItem>
+							</Select>
+						</FormControl>
+
+						<FormControl sx={{ width: '10ch', marginLeft: 8 }}>
+							<OutlinedInput placeholder="Please enter text" />
+						</FormControl>
+						
+						<FormControl sx={{ m: 1, minWidth: 140, marginLeft: 8 }}>
+							<Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" />
+						</FormControl>
+
+						<FormGroup sx={{ m: 1, minWidth: 160, marginLeft: 8 }}>
+							<FormControlLabel control={<Switch defaultChecked />} label="Show Hide Notes" />
+							<FormControlLabel disabled control={<Switch />} label="Show Hide Conversations" />
+						</FormGroup>
+
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ flexGrow: 1 }} />
 
             {/* notification & profile */}
             <NotificationSection />
             <ProfileSection />
+						<LogOut />
         </>
     );
 };

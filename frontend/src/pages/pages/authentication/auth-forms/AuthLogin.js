@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import  { useNavigate } from 'react-router-dom';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -45,6 +45,8 @@ const FirebaseLogin = ({ ...others }) => {
     const [checked, setChecked] = useState(true);
 		const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
+		const navigate = useNavigate();
+
     const googleHandler = async () => {
         console.error('Login');
     };
@@ -68,7 +70,7 @@ const FirebaseLogin = ({ ...others }) => {
 
     const handleSubmitSignIn = (e) => {
 			if (userInfo.email && userInfo.password) {
-				console.log('login')
+				navigate('/dashboard', { replace: true });
 			}
     }
 

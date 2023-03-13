@@ -22,10 +22,9 @@ const other = {
             id: 'documentation',
             title: 'Documentation',
             type: 'item',
-            url: 'https://codedthemes.gitbook.io/berry/',
+            url: '/sample-page',
             icon: icons.IconHelp,
-            external: true,
-            target: true
+            breadcrumbs: false
         }
     ]
 };

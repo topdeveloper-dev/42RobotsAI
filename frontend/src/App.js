@@ -17,7 +17,7 @@ const App = () => {
 
   if (!isNetwork)
     return (
-       console.log('Check your Internet Connection or your network.')
+      console.log('Check your Internet Connection or your network.')
     );
     else {
       return (

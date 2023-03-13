@@ -30,7 +30,7 @@ import useScriptRef from 'hooks/useScriptRef';
 import Google from 'assets/images/icons/social-google.svg';
 import AnimateButton from '../../../../components/extended/AnimateButton';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
-
+import { useNavigate } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -88,16 +88,12 @@ const FirebaseRegister = ({ ...others }) => {
         changePassword('123456');
     }, []);
 
-		const initState={
-			email: '',
-			password: '',
-			submit: null
-		}
+		const navigate = useNavigate();
 
 		const handleSubmitSignUp = (e) => {
-			if (userInfo.email && userInfo.password && userInfo.firstName && userInfo.lastName) [
-				console.log('11111111')
-			]
+			if (userInfo.email && userInfo.password && userInfo.firstName && userInfo.lastName) {
+				navigate('/dashboard');
+			}
 		}
 
     return (

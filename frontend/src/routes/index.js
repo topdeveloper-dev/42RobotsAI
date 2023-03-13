@@ -32,10 +32,6 @@ export const routes = [
     path: '/register',
     element: <Register />,
   },
-  // {
-  //   path: '/reset_password',
-  //   element: <Reset />,
-  // },
   {
     path: '',
     element: <MainLayout/>,
