@@ -2,7 +2,7 @@
     "name": "berry-material-react-free",
     "version": "3.3.1",
     "private": true,
-    "homepage": "https://berrydashboard.io/free",
+    "homepage": "https://berrydashboard.io",
     "dependencies": {
         "@emotion/cache": "^11.9.3",
         "@emotion/react": "^11.9.3",
@@ -14,8 +14,10 @@
         "@mui/utils": "^5.8.6",
         "@tabler/icons": "^1.72.0",
         "apexcharts": "^3.35.3",
+        "babel-loader": "^9.1.2",
+        "feather-icons": "^4.29.0",
         "formik": "^2.2.9",
-        "framer-motion": "^6.3.16",
+        "framer-motion": "^7.3.2",
         "material-ui-popup-state": "^4.0.1",
         "prop-types": "^15.8.1",
         "react": "^18.2.0",
@@ -30,7 +32,10 @@
         "redux": "^4.2.0",
         "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.4.2",
-        "yup": "^0.32.11"
+        "styled-components": "^5.3.5",
+        "tailwindcss": "^3.0.0",
+        "twin.macro": "^3.0.0-rc.4",
+        "yup": "^1.0.2"
     },
     "scripts": {
         "start": "react-scripts start",

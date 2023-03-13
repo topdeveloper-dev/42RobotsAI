@@ -46,7 +46,7 @@ const Login = () => {
                                                         gutterBottom
                                                         variant={matchDownSM ? 'h3' : 'h2'}
                                                     >
-                                                        Hi, Welcome Back
+                                                        Hi, Welcome 
                                                     </Typography>
                                                     <Typography
                                                         variant="caption"
@@ -69,7 +69,7 @@ const Login = () => {
                                         <Grid item container direction="column" alignItems="center" xs={12}>
                                             <Typography
                                                 component={Link}
-                                                to="/pages/register/register3"
+                                                to="/register"
                                                 variant="subtitle1"
                                                 sx={{ textDecoration: 'none' }}
                                             >

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -42,6 +41,8 @@ const FirebaseRegister = ({ ...others }) => {
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
+		const [emailError, setEmailError] = useState(false);
+		const [userInfo, setUserInfo] = useState({ firstName: '', lastName: '', email: '', password: '' });
     const customization = useSelector((state) => state.customization);
     const [showPassword, setShowPassword] = useState(false);
     const [checked, setChecked] = useState(true);
@@ -57,9 +58,25 @@ const FirebaseRegister = ({ ...others }) => {
         setShowPassword(!showPassword);
     };
 
+		const handleChangeFirstName = (event) => {
+			setUserInfo({ ...userInfo, firstName: event.target.value });
+		};
+
+		const handleChangeLastName = (event) => {
+				setUserInfo({ ...userInfo, lastName: event.target.value });
+		};
+
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+		const handleChangeEmail = (event) => {
+			setUserInfo({ ...userInfo, email: event.target.value });
+		};
+
+		const handleChangePassword = (event) => {
+				setUserInfo({ ...userInfo, password: event.target.value });
+		};
 
     const changePassword = (value) => {
         const temp = strengthIndicator(value);
@@ -70,6 +87,18 @@ const FirebaseRegister = ({ ...others }) => {
     useEffect(() => {
         changePassword('123456');
     }, []);
+
+		const initState={
+			email: '',
+			password: '',
+			submit: null
+		}
+
+		const handleSubmitSignUp = (e) => {
+			if (userInfo.email && userInfo.password && userInfo.firstName && userInfo.lastName) [
+				console.log('11111111')
+			]
+		}
 
     return (
         <>
@@ -123,8 +152,7 @@ const FirebaseRegister = ({ ...others }) => {
                     </Box>
                 </Grid>
             </Grid>
-
-            <Formik
+						<Formik
                 initialValues={{
                     email: '',
                     password: '',
@@ -150,7 +178,7 @@ const FirebaseRegister = ({ ...others }) => {
                     }
                 }}
             >
-                {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+                {({ errors, handleBlur, handleSubmit, handleChange, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <Grid container spacing={matchDownSM ? 0 : 2}>
                             <Grid item xs={12} sm={6}>
@@ -162,6 +190,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     type="text"
                                     defaultValue=""
                                     sx={{ ...theme.typography.customInput }}
+																		onChange={handleChangeFirstName}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -173,6 +202,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     type="text"
                                     defaultValue=""
                                     sx={{ ...theme.typography.customInput }}
+																		onChange={handleChangeLastName}
                                 />
                             </Grid>
                         </Grid>
@@ -184,8 +214,12 @@ const FirebaseRegister = ({ ...others }) => {
                                 value={values.email}
                                 name="email"
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={(e) => {
+																	handleChangeEmail(e);
+																	handleChange(e);
+																}}
                                 inputProps={{}}
+																error={emailError}
                             />
                             {touched.email && errors.email && (
                                 <FormHelperText error id="standard-weight-helper-text--register">
@@ -208,6 +242,7 @@ const FirebaseRegister = ({ ...others }) => {
                                 label="Password"
                                 onBlur={handleBlur}
                                 onChange={(e) => {
+																	handleChangePassword(e);
                                     handleChange(e);
                                     changePassword(e.target.value);
                                 }}
@@ -291,6 +326,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     type="submit"
                                     variant="contained"
                                     color="secondary"
+																		onClick={handleSubmitSignUp}
                                 >
                                     Sign up
                                 </Button>

@@ -43,6 +43,7 @@ const FirebaseLogin = ({ ...others }) => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
+		const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
     const googleHandler = async () => {
         console.error('Login');
@@ -56,6 +57,20 @@ const FirebaseLogin = ({ ...others }) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+		const handleChangeEmail = (event) => {
+			setUserInfo({ ...userInfo, email: event.target.value });
+		};
+
+		const handleChangePassword = (event) => {
+				setUserInfo({ ...userInfo, password: event.target.value });
+		};
+
+    const handleSubmitSignIn = (e) => {
+			if (userInfo.email && userInfo.password) {
+				console.log('login')
+			}
+    }
 
     return (
         <>
@@ -120,8 +135,8 @@ const FirebaseLogin = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: '',
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -154,7 +169,10 @@ const FirebaseLogin = ({ ...others }) => {
                                 value={values.email}
                                 name="email"
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={(e) => {
+																	handleChangeEmail(e);
+																	handleChange(e);
+															}}
                                 label="Email Address / Username"
                                 inputProps={{}}
                             />
@@ -177,7 +195,10 @@ const FirebaseLogin = ({ ...others }) => {
                                 value={values.password}
                                 name="password"
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={(e) => {
+																	handleChangePassword(e);
+																	handleChange(e);
+                                }}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
@@ -232,6 +253,7 @@ const FirebaseLogin = ({ ...others }) => {
                                     type="submit"
                                     variant="contained"
                                     color="secondary"
+                                    onClick={handleSubmitSignIn}
                                 >
                                     Sign in
                                 </Button>

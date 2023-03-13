@@ -4,6 +4,6 @@
         "module": "commonjs",
         "baseUrl": "src"
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "src/routes/.js", "src/routes/.js"],
     "exclude": ["node_modules"]
 }
