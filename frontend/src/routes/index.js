@@ -50,7 +50,7 @@ export const routes = [
         ]
       },
       {
-        path: 'utils',
+        path: 'profile',
         children: [
           {
             path: 'util-typography',

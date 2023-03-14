@@ -105,7 +105,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
 						<FormGroup sx={{ m: 1, minWidth: 160, marginLeft: 8 }}>
 							<FormControlLabel control={<Switch defaultChecked />} label="Show Hide Notes" />
-							<FormControlLabel disabled control={<Switch />} label="Show Hide Conversations" />
+							<FormControlLabel control={<Switch />} label="Show Hide Conversations" />
 						</FormGroup>
 
             <Box sx={{ flexGrow: 1 }} />
