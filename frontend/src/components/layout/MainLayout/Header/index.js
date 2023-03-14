@@ -35,10 +35,9 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
     return (
         <>
-            {/* logo & toggler button */}
             <Box
                 sx={{
-                    width: 234,
+                    width: 228,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
@@ -95,7 +94,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
 							</Select>
 						</FormControl>
 
-						<FormControl sx={{ width: '10ch', marginLeft: 8 }}>
+						<FormControl sx={{ width: '12ch', marginLeft: 8 }}>
 							<OutlinedInput placeholder="Please enter text" />
 						</FormControl>
 						
@@ -105,11 +104,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
 						<FormGroup sx={{ m: 1, minWidth: 160, marginLeft: 8 }}>
 							<FormControlLabel control={<Switch defaultChecked />} label="Show Hide Notes" />
-							<FormControlLabel control={<Switch />} label="Show Hide Conversations" />
+							<FormControlLabel disabled control={<Switch />} label="Show Hide Conversations" />
 						</FormGroup>
-
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} />
 
             {/* notification & profile */}
             <NotificationSection />

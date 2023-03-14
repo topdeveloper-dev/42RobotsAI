@@ -36,7 +36,7 @@ import UpgradePlanCard from './UpgradePlanCard';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
-import ProfileDialog from './Profile';
+import ProfileDialog from '../../../../../pages/pages/profile';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -213,7 +213,7 @@ const ProfileSection = () => {
                     </Transitions>
                 )}
             </Popper>
-						<ProfileDialog open={[profile, setProfile]} />
+						{/* <ProfileDialog open={[profile, setProfile]} /> */}
         </>
     );
 };
